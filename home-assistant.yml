@@ -1,0 +1,20 @@
+# This file is a helper for the deployment of Home Assistant if not the role
+# is used.
+#
+# Copyright (c) 2015-2016 Fabian Affolter <fabian@affolter-engineering.ch>
+#
+# Licensed under MIT. All rights reserved.
+#
+---
+- hosts: home-assistant
+  gather_facts: false
+  vars:
+    ha_user: ha
+    ha_version: 0.19.4
+    ha_port: 8123
+    ha_venv: /opt/home-assistant
+    pkgs: [unzip, tar, wget, htop]
+
+  tasks:
+    - include: tasks/main.yml
+
