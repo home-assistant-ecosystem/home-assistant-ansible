@@ -1,0 +1,29 @@
+# This file is part of the Home Assistant role.
+#
+# Copyright (c) 2015-2016 Fabian Affolter <fabian@affolter-engineering.ch>
+#
+# Licensed under MIT. All rights reserved.
+#
+---
+- name: download systemd service unit
+  get_url:
+    url: https://raw.githubusercontent.com/home-assistant/home-assistant/dev/script/home-assistant%40.service
+    dest: /lib/systemd/system/{{ ha_user }}@home-assistant.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: modify systemd service unit for venv
+  replace:
+    dest: /lib/systemd/system/{{ ha_user }}@home-assistant.service
+    regexp: "^ExecStart=/usr/bin/hass"
+    replace: "ExecStart={{ ha_venv }}/bin/hass"
+
+- name: reload systemd
+  command: /usr/bin/systemctl --system daemon-reload
+
+- name: start home-assistant
+  service: name={{ ha_user }}@home-assistant
+           state=running
+           enabled=yes
+

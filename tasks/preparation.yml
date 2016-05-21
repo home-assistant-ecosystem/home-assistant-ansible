@@ -1,0 +1,23 @@
+# This file is part of the Home Assistant role.
+#
+# Copyright (c) 2015-2016 Fabian Affolter <fabian@affolter-engineering.ch>
+#
+# Licensed under MIT. All rights reserved.
+#
+---
+- name: install python and dependencies for ansible modules
+  raw: dnf install -y python2 python2-dnf libselinux-python firewalld
+
+- name: gather facts
+  setup:
+
+- name: install the needed packages
+  package: name="{{ item }}"
+           state=present
+  with_items: "{{ pkgs }}"
+
+- name: create an user
+  user: name="{{ ha_user }}"
+        comment="Home Assistant user"
+        createhome=yes
+

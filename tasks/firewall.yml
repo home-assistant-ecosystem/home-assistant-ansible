@@ -1,0 +1,13 @@
+# This file is part of the Home Assistant role.
+#
+# Copyright (c) 2015-2016 Fabian Affolter <fabian@affolter-engineering.ch>
+#
+# Licensed under MIT. All rights reserved.
+#
+---
+- name: open port for home assistant
+  firewalld: port={{ ha_port }}/tcp
+             permanent=true
+             state=enabled
+             immediate=yes
+
