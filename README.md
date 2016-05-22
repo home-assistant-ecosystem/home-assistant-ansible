@@ -8,7 +8,7 @@ Requirements
 
 One requirement is to have a system with a configured instance of Ansible. This means that you have an inventory and access to the remost system via SSH with keys.
 
-1. Add the remote system to your Ansible's `hosts` (`/etc/ansible/hosts`) file.
+1. Add the remote system to your Ansible's `hosts` (`/etc/ansible/hosts`) file to the group `[home-assistant}`.
 2. For every system you want to manage, you need to have the master's SSH key in the *authorized_keys* file of the managed/remote system.
 
 From the management system for the user **root**:
@@ -20,7 +20,7 @@ $ sudo ssh-copy-id -i /home/[your local user]/.ssh/id_rsa.pub root@[IP address o
 3. Perform a first check if Ansible works:
 
 ```bash
-ansible ha-system -m ping
+ansible home-assistant -m ping
 192.168.1.2 | success >> {
     "changed": false,
     "ping": "pong"
@@ -49,7 +49,7 @@ Example Playbook
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ```bash
-- hosts: ha
+- hosts: home-assistant
   roles:
      - home-assistant.home-assistant-ansible
 ```
