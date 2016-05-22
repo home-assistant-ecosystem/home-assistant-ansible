@@ -10,7 +10,7 @@
   gather_facts: false
   vars:
     ha_user: ha
-    ha_version: 0.19.4
+    ha_version: 0.20
     ha_port: 8123
     ha_venv: /opt/home-assistant
     pkgs: [unzip, tar, wget, htop]
