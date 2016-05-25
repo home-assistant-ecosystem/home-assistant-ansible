@@ -27,3 +27,8 @@
            state=running
            enabled=yes
 
+- name: start cockpit
+  service: name=cockpit
+           state=running
+           enabled=yes
+
