@@ -6,7 +6,7 @@
 #
 ---
 - name: install python and dependencies for ansible modules
-  raw: dnf install -y python2 python2-dnf libselinux-python firewalld
+  raw: dnf -y install python2 python2-dnf libselinux-python firewalld
 
 - name: gather facts
   setup:
