@@ -12,5 +12,5 @@ ha_user: ha
 # The default port
 ha_port: 8123
 # List of additional packages to install
-pkgs: [unzip, tar, wget, htop, cockpit]
+pkgs: [unzip, tar, wget, htop, cockpit, gcc, python3-devel, redhat-rpm-config]
 
