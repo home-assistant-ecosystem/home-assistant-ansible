@@ -15,5 +15,4 @@
   pip:
     name: colorlog
     virtualenv: "{{ ha_venv }}"
-    executable: pip3.5
 
