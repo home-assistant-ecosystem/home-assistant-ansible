@@ -5,14 +5,11 @@
 # Licensed under MIT. All rights reserved.
 #
 ---
-- name: install home-assistant in venv
+- name: install home-assistant
   pip:
     name: homeassistant
-    virtualenv: "{{ ha_venv }}"
-    virtualenv_command: pyvenv-3.5
 
 - name: install colorlog
   pip:
     name: colorlog
-    virtualenv: "{{ ha_venv }}"
 
