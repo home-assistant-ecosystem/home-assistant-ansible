@@ -9,5 +9,5 @@
   - include: motd.yml
   - include: installation.yml
   - include: systemd.yml
-#  - include: firewall.yml
+  - include: firewall.yml
 
