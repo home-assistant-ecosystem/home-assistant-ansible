@@ -13,12 +13,6 @@
     group: root
     mode: 0644
 
-- name: modify systemd service unit for venv
-  replace:
-    dest: /lib/systemd/system/{{ ha_user }}@home-assistant.service
-    regexp: "^ExecStart=/usr/bin/hass"
-    replace: "ExecStart={{ ha_venv }}/bin/hass"
-
 - name: reload systemd
   command: /usr/bin/systemctl --system daemon-reload
 
