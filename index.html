@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Home Assistant Ansible by home-assistant</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Home Assistant Ansible</h1>
+        <p>Ansible playbooks/role for the setup of Home Assistant.</p>
+
+        <p class="view"><a href="https://github.com/home-assistant/home-assistant-ansible">View the Project on GitHub <small>home-assistant/home-assistant-ansible</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/home-assistant/home-assistant-ansible/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/home-assistant/home-assistant-ansible/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/home-assistant/home-assistant-ansible">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="home-assistant" class="anchor" href="#home-assistant" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Home Assistant</h1>
+
+<p>This role deploys <a href="https://home-assistant.io/">Home Assistant</a> to a remote systems.</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>One requirement is to have a system with a configured instance of Ansible. This means that you have an inventory and access to the remost system via SSH with keys.</p>
+
+<ol>
+<li>Add the remote system to your Ansible's <code>hosts</code> (<code>/etc/ansible/hosts</code>) file to the group <code>[home-assistant}</code>.</li>
+<li>For every system you want to manage, you need to have the master's SSH key in the <em>authorized_keys</em> file of the managed/remote system.</li>
+</ol>
+
+<p>From the management system for the user <strong>root</strong>:</p>
+
+<pre><code>$ sudo ssh-copy-id -i /home/[your local user]/.ssh/id_rsa.pub root@[IP address of remote system]
+</code></pre>
+
+<ol>
+<li>Perform a first check if Ansible works:</li>
+</ol>
+
+<div class="highlight highlight-source-shell"><pre>ansible home-assistant -m ping
+192.168.1.2 <span class="pl-k">|</span> success <span class="pl-k">&gt;&gt;</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>changed<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>ping<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>pong<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<p>For further details about the setup of Ansible, check their <a href="http://docs.ansible.com/ansible/">documentation</a>.</p>
+
+<h2>
+<a id="role-variables" class="anchor" href="#role-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Role Variables</h2>
+
+<ul>
+<li>
+<strong>ha_venv</strong>: The location of the virtual environment. Defaults to <code>/opt/home-assistant</code>
+</li>
+<li>
+<strong>ha_user</strong>: The user for Home Assistant. Defaults to <code>ha</code>.</li>
+<li>
+<strong>ha_port</strong>: The default port which is 8123. If you change that your will need to modify the <code>configuration.yml</code> file of Home Assistant.</li>
+<li>
+<strong>pkgs</strong>: List of packages to install on the remote system.</li>
+</ul>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<p>There are no dependencies for this role.</p>
+
+<h2>
+<a id="example-playbook" class="anchor" href="#example-playbook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example Playbook</h2>
+
+<p>Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:</p>
+
+<div class="highlight highlight-source-shell"><pre>- hosts: home-assistant
+  roles:
+     - home-assistant.home-assistant-ansible</pre></div>
+
+<h2>
+<a id="warning" class="anchor" href="#warning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Warning</h2>
+
+<p><strong>Think first</strong> before you implement stuff from this repository. Consider the playbooks in this repository as non-generic. They were made especially for the deployment of Home Assistant.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT</p>
+
+<h2>
+<a id="author-information" class="anchor" href="#author-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Author Information</h2>
+
+<p><a href="https://github.com/fabaff">Fabian Affolter</a>. If you are too young to know what e-mail is, use <a href="https://twitter.com/fabaff">@fabaff</a> ;-).</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/home-assistant">home-assistant</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
