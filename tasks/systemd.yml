@@ -13,13 +13,12 @@
     group: root
     mode: 0644
 
-- name: reload systemd
-  command: /usr/bin/systemctl --system daemon-reload
-
 - name: start home-assistant
-  service: name={{ ha_user }}@home-assistant
-           state=running
-           enabled=yes
+  systemd:
+    name: "home-assistant@{{ ha_user }}"
+    daemon_reload: yes
+    enabled: yes
+    state: started
 
 - name: start cockpit
   service: name=cockpit
