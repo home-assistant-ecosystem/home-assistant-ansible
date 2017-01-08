@@ -6,10 +6,8 @@
 #
 ---
 - name: open port for home assistant
-  firewalld: port={{ ha_port }}/tcp
-             permanent=true
-             state=enabled
-             immediate=yes
-
-
-
+  firewalld:
+    port: "{{ ha_port }}/tcp"
+    permanent: true
+    state: enabled
+    immediate: yes
