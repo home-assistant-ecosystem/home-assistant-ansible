@@ -9,8 +9,6 @@
   pip: name={{ item }} extra_args="--upgrade" executable=pip3
   with_items:
   - colorlog
-#  - pathlib
-#  - setuptools
 
 - name: install defined version of Home Assistant
   pip: name=homeassistant version={{ ha_version }} executable=pip3

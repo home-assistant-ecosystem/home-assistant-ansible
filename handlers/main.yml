@@ -9,4 +9,3 @@
   service:
     name: "home-assistant@{{ ha_user }}"
     state: restarted
-
