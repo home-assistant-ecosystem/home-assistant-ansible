@@ -11,10 +11,5 @@
              state=enabled
              immediate=yes
 
-- name: open port for cockpit
-  firewalld: port=9090/tcp
-             permanent=true
-             state=enabled
-             immediate=yes
 
 

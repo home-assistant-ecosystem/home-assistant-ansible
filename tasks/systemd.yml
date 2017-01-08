@@ -19,9 +19,3 @@
     daemon_reload: yes
     enabled: yes
     state: started
-
-- name: start cockpit
-  service: name=cockpit
-           state=running
-           enabled=yes
-
