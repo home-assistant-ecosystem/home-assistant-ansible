@@ -7,7 +7,7 @@
 #
 ---
 - hosts: home-assistant
-  gather_facts: false
+  become: true
   vars:
     ha_user: ha
     ha_version: 0.22.1
