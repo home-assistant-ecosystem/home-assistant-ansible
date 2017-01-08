@@ -12,7 +12,7 @@
     ha_user: ha
     ha_version: 0.22.1
     ha_port: 8123
-    ha_venv: /opt/home-assistant
+    ha_conf_dir: /opt/home-assistant
     pkgs: [unzip, tar, wget, htop, cockpit]
 
   tasks:

@@ -21,3 +21,6 @@
         comment="Home Assistant user"
         createhome=yes
 
+- name: create directory
+  file: path={{ ha_conf_dir }} state=directory mode=0755 owner={{ ha_user }} group={{ ha_user }}
+
