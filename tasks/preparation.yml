@@ -9,11 +9,14 @@
   raw: dnf -y install python2 python2-dnf libselinux-python firewalld
   changed_when: false
 
+- name: install required packages
+  package: name={{ item }} state=present
+  with_items:
+  - python3-pip
+  - python-firewall
+  - python3-devel
+  - gcc
 
-- name: install the needed packages
-  package: name="{{ item }}"
-           state=present
-  with_items: "{{ pkgs }}"
 
 - name: create user
   user: name={{ ha_user }} comment="Home Assistant" createhome=no system=yes shell="/sbin/nologin"

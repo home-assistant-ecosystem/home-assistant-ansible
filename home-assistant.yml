@@ -13,7 +13,6 @@
     ha_version: 0.22.1
     ha_port: 8123
     ha_conf_dir: /opt/home-assistant
-    pkgs: [unzip, tar, wget, htop, cockpit]
 
   tasks:
     - include: tasks/main.yml

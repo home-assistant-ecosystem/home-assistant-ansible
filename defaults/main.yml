@@ -11,7 +11,5 @@ ha_conf_dir: /opt/home-assistant
 ha_user: ha
 # The default port
 ha_port: 8123
-# List of additional packages to install
-pkgs: [unzip, tar, wget, htop, cockpit, gcc, python3-devel, redhat-rpm-config]
 # modify motd
 motd_modification: false
