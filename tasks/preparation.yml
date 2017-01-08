@@ -9,8 +9,6 @@
   raw: dnf -y install python2 python2-dnf libselinux-python firewalld
   changed_when: false
 
-- name: gather facts
-  setup:
 
 - name: install the needed packages
   package: name="{{ item }}"
