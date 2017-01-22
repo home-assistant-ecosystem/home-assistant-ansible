@@ -5,24 +5,17 @@
 # Licensed under MIT. All rights reserved.
 #
 ---
-- name: download systemd service unit
-  get_url:
-    url: https://raw.githubusercontent.com/home-assistant/home-assistant/dev/script/home-assistant%40.service
-    dest: /lib/systemd/system/{{ ha_user }}@home-assistant.service
+- name: install systemd unit file
+  template:
+    src: home-assistant.service.j2
+    dest: "/etc/systemd/system/home-assistant@{{ ha_user }}.service"
     owner: root
     group: root
     mode: 0644
 
-- name: reload systemd
-  command: /usr/bin/systemctl --system daemon-reload
-
 - name: start home-assistant
-  service: name={{ ha_user }}@home-assistant
-           state=running
-           enabled=yes
-
-- name: start cockpit
-  service: name=cockpit
-           state=running
-           enabled=yes
-
+  systemd:
+    name: "home-assistant@{{ ha_user }}"
+    daemon_reload: yes
+    enabled: yes
+    state: started

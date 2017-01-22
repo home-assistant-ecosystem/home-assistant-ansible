@@ -5,9 +5,9 @@
 # Licensed under MIT. All rights reserved.
 #
 ---
-  - include: preparation.yml
-  - include: motd.yml
-  - include: installation.yml
-  - include: systemd.yml
-  - include: firewall.yml
-
+- include: preparation.yml
+- include: motd.yml
+  when: motd_modification | default(false)
+- include: installation.yml
+- include: systemd.yml
+- include: firewall.yml

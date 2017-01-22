@@ -1,14 +1,14 @@
 Home Assistant
 ==============
 
-This role deploys [Home Assistant](https://home-assistant.io/) to a remote systems.
+This role deploys [Home Assistant](https://home-assistant.io/) to a remote system.
 
 Requirements
 ------------
 
-One requirement is to have a system with a configured instance of Ansible. This means that you have an inventory and access to the remost system via SSH with keys.
+One requirement is to have a system with a configured instance of Ansible. This means that you have an inventory and access to the remote system via SSH with keys.
 
-1. Add the remote system to your Ansible's `hosts` (`/etc/ansible/hosts`) file to the group `[home-assistant}`.
+1. Add the remote system to your Ansible's `hosts` (`/etc/ansible/hosts`) file to the group `[home-assistant]`.
 2. For every system you want to manage, you need to have the master's SSH key in the *authorized_keys* file of the managed/remote system.
 
 From the management system for the user **root**:
@@ -34,7 +34,7 @@ Role Variables
 
 - **ha_venv**: The location of the virtual environment. Defaults to `/opt/home-assistant`
 - **ha_user**: The user for Home Assistant. Defaults to `ha`.
-- **ha_port**: The default port which is 8123. If you change that your will need to modify the `configuration.yml` file of Home Assistant.
+- **ha_port**: The default port which is 8123. If you change that you will need to modify the `configuration.yml` file of Home Assistant.
 - **pkgs**: List of packages to install on the remote system.
 
 
