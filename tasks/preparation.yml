@@ -7,17 +7,19 @@
 ---
 - name: install python and dependencies for ansible modules
   raw: dnf -y install python2 python2-dnf libselinux-python firewalld
+  changed_when: false
 
-- name: gather facts
-  setup:
+- name: install required packages
+  package: name={{ item }} state=present
+  with_items:
+  - python3-pip
+  - python-firewall
+  - python3-devel
+  - gcc
+  - redhat-rpm-config
 
-- name: install the needed packages
-  package: name="{{ item }}"
-           state=present
-  with_items: "{{ pkgs }}"
+- name: create user
+  user: name={{ ha_user }} comment="Home Assistant" createhome=no system=yes shell="/sbin/nologin"
 
-- name: create an user
-  user: name="{{ ha_user }}"
-        comment="Home Assistant user"
-        createhome=yes
-
+- name: create directory
+  file: path={{ ha_conf_dir }} state=directory mode=2775 owner={{ ha_user }} group={{ ha_user }}

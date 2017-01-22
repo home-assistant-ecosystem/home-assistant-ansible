@@ -7,6 +7,5 @@
 ---
 - name: restart home-assistant
   service:
-    name: "{{ ha_user }}@home-assistant"
+    name: "home-assistant@{{ ha_user }}"
     state: restarted
-

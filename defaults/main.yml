@@ -5,12 +5,11 @@
 # Licensed under MIT. All rights reserved.
 #
 ---
-# The location of the virtual environment
-ha_venv: /opt/home-assistant
+# The location of the config directory
+ha_conf_dir: /opt/home-assistant
 # The default user
 ha_user: ha
 # The default port
 ha_port: 8123
-# List of additional packages to install
-pkgs: [unzip, tar, wget, htop, cockpit, gcc, python3-devel, redhat-rpm-config]
-
+# modify motd
+motd_modification: false

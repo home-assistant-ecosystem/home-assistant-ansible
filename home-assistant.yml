@@ -7,14 +7,11 @@
 #
 ---
 - hosts: home-assistant
-  gather_facts: false
+  become: true
   vars:
     ha_user: ha
-    ha_version: 0.22.1
     ha_port: 8123
-    ha_venv: /opt/home-assistant
-    pkgs: [unzip, tar, wget, htop, cockpit]
+    ha_conf_dir: /opt/home-assistant
 
   tasks:
-    - include: tasks/main.yml
-
+  - include: tasks/main.yml
