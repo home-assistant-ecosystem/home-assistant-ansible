@@ -1,4 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache](hhttps://img.shields.io/badge/License-Apache%202-yellow.svg)](hhttps://opensource.org/licenses/Apache-2.0)
 
 Home Assistant
 ==============
@@ -71,7 +71,7 @@ Warning
 License
 -------
 
-MIT
+Apache 2.0
 
 Author Information
 ------------------
