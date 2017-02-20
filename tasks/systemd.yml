@@ -8,14 +8,14 @@
 - name: install systemd unit file
   template:
     src: home-assistant.service.j2
-    dest: "/etc/systemd/system/home-assistant@{{ ha_user }}.service"
+    dest: "/etc/systemd/system/home-assistant.service"
     owner: root
     group: root
     mode: 0644
 
 - name: start home-assistant
   systemd:
-    name: "home-assistant@{{ ha_user }}"
+    name: home-assistant
     daemon_reload: yes
     enabled: yes
     state: started
