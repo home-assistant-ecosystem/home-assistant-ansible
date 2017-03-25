@@ -5,19 +5,38 @@
 # Licensed under MIT. All rights reserved.
 #
 ---
-- name: install python and dependencies for ansible modules
-  raw: dnf -y install python2 python2-dnf libselinux-python firewalld
-  changed_when: false
-
-- name: install required packages
+- name: install commonly-named packages
   package: name={{ item }} state=present
   with_items:
+  - python3
   - python3-pip
+  - gcc
+
+- name: install Fedora-specific packages
+  package: name={{ item }} state=present
+  with_items:
   - python-firewall
   - python3-devel
-  - gcc
   - redhat-rpm-config
+  - python2
+  - python2-dnf
+  - libselinux-python
+  - firewalld
   - which
+  when: ansible_distribution == "Fedora"
+
+- name: install Debian-specific packages
+  package: name={{ item }} state=present
+  with_items:
+  - python3-dev
+  when: ansible_distribution == "Debian"
+
+- name: install Debian-required pip packages
+  pip: name={{ item }} state=present executable=pip3
+  with_items:
+  - appdirs
+  - packaging
+  when: ansible_distribution == "Debian"
 
 - name: create user
   user: name={{ ha_user }} comment="Home Assistant" createhome=no system=yes shell="/sbin/nologin"

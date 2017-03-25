@@ -11,3 +11,4 @@
 - include: installation.yml
 - include: systemd.yml
 - include: firewall.yml
+  when: ansible_distribution == "Fedora"
