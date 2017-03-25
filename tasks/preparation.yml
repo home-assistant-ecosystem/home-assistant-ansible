@@ -17,6 +17,7 @@
   - python3-devel
   - gcc
   - redhat-rpm-config
+  - which
 
 - name: create user
   user: name={{ ha_user }} comment="Home Assistant" createhome=no system=yes shell="/sbin/nologin"
