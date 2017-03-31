@@ -16,6 +16,9 @@ galaxy_info:
       versions:
         - 23
         - 24
+    - name: Debian
+      versions:
+        - jessie
   categories:
     - system
     - home-automation
