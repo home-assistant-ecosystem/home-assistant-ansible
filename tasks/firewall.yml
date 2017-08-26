@@ -5,6 +5,10 @@
 # Licensed under MIT. All rights reserved.
 #
 ---
+- service:
+    name: firewalld
+    state: started
+
 - name: open port for home assistant
   firewalld:
     port: "{{ ha_port }}/tcp"
