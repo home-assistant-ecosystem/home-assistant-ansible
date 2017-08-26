@@ -1,4 +1,4 @@
-[![License: Apache](hhttps://img.shields.io/badge/License-Apache%202-yellow.svg)](hhttps://opensource.org/licenses/Apache-2.0)
+[![License: Apache](https://img.shields.io/badge/License-Apache%202-yellow.svg)](hhttps://opensource.org/licenses/Apache-2.0)
 
 Home Assistant
 ==============
