@@ -6,14 +6,23 @@
 #
 ---
 - name: install required python modules (pre-install)
-  pip: name={{ item }} extra_args="--upgrade" executable=pip3
+  pip:
+    name: "{{ item }}"
+    extra_args: "--upgrade"
+    executable: pip3
   with_items:
-  - colorlog
+    - colorlog
 
 - name: install defined version of Home Assistant
-  pip: name=homeassistant version={{ ha_version }} executable=pip3
+  pip:
+    name: homeassistant
+    version: "{{ ha_version }}"
+    executable: pip3
   when: ha_version is defined
 
 - name: install latest version of Home Assistant
-  pip: name=homeassistant extra_args="--upgrade" executable=pip3
+  pip:
+    name: homeassistant
+    extra_args: "--upgrade"
+    executable: pip3
   when: ha_version is undefined

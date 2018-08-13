@@ -8,7 +8,7 @@
 - shell: which hass
   register: hass_command
 
-- name: install Fedora systemd unit file
+- name: install fedora systemd unit file
   template:
     src: home-assistant.service.j2
     dest: "/etc/systemd/system/home-assistant.service"
@@ -16,7 +16,7 @@
     group: root
     mode: 0644
 
-- name: start home-assistant
+- name: start home assistant
   systemd:
     name: home-assistant
     daemon_reload: yes
