@@ -1,7 +1,7 @@
 # This file is a helper for the deployment of Home Assistant if not the role
 # is used.
 #
-# Copyright (c) 2015-2018 Fabian Affolter <fabian@affolter-engineering.ch>
+# Copyright (c) 2015-2020 Fabian Affolter <fabian@affolter-engineering.ch>
 #
 # Licensed under Apache 2.0. All rights reserved.
 #
