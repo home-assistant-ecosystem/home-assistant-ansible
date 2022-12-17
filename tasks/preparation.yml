@@ -51,7 +51,6 @@
   user:
     name: "{{ ha_user }}"
     comment: "Home Assistant"
-    createhome: no
     system: yes
     shell: "/sbin/nologin"
 
