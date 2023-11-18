@@ -5,10 +5,10 @@
 # Licensed under Apache 2.0. All rights reserved.
 #
 ---
-- include: preparation.yml
-- include: motd.yml
+- include_tasks: preparation.yml
+- include_tasks: motd.yml
   when: motd_modification | default(false)
-- include: installation.yml
-- include: systemd.yml
-- include: firewall.yml
+- include_tasks: installation.yml
+- include_tasks: systemd.yml
+- include_tasks: firewall.yml
   when: ansible_distribution == "Fedora"
