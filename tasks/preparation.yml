@@ -60,4 +60,5 @@
   with_items:
     - appdirs
     - packaging
+    - python-dateutil
   when: ansible_distribution == "Debian"
