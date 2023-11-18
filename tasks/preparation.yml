@@ -41,7 +41,7 @@
   pip:
     name: "{{ item }}"
     state: present
-    executable: pip3
+    virtualenv: "{{ ha_conf_dir }}"
   with_items:
     - appdirs
     - packaging
