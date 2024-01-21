@@ -5,24 +5,23 @@
 # Licensed under Apache 2.0. All rights reserved.
 #
 ---
-- name: install required python modules (pre-install)
-  pip:
-    name: "{{ item }}"
-    extra_args: "--upgrade"
-    executable: pip3
-  with_items:
-    - colorlog
 
 - name: install defined version of Home Assistant
+  become: true
+  become_user: "{{ ha_user }}"
   pip:
     name: homeassistant
     version: "{{ ha_version }}"
-    executable: pip3
+    virtualenv: "{{ ha_conf_dir }}/{{ ha_venv }}"
+    virtualenv_command: python3 -m venv
   when: ha_version is defined
 
 - name: install latest version of Home Assistant
+  become: true
+  become_user: "{{ ha_user }}"
   pip:
     name: homeassistant
     extra_args: "--upgrade"
-    executable: pip3
+    virtualenv: "{{ ha_conf_dir }}/{{ ha_venv }}"
+    virtualenv_command: python3 -m venv
   when: ha_version is undefined

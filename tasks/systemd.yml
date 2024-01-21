@@ -5,10 +5,11 @@
 # Licensed under Apache 2.0. All rights reserved.
 #
 ---
-- shell: which hass
-  register: hass_command
+#- shell: which hass
+#  register: hass_command
 
 - name: install fedora systemd unit file
+  become: true
   template:
     src: home-assistant.service.j2
     dest: "/etc/systemd/system/home-assistant.service"
@@ -17,6 +18,7 @@
     mode: 0644
 
 - name: start home assistant
+  become: true
   systemd:
     name: home-assistant
     daemon_reload: yes
