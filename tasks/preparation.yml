@@ -6,6 +6,7 @@
 #
 ---
 - name: install commonly-named packages
+  become: true
   package:
     name: "{{ item }}"
     state: present
@@ -30,34 +31,47 @@
   when: ansible_distribution == "Fedora"
 
 - name: install debian-specific packages
+  become: true
   package:
     name: "{{ item }}"
     state: present
   with_items:
     - python3-dev
-  when: ansible_distribution == "Debian"
-
-- name: install debian-required pip packages
-  pip:
-    name: "{{ item }}"
-    state: present
-    executable: pip3
-  with_items:
-    - appdirs
-    - packaging
+    - python3-venv
+    - acl
+    - ffmpeg
   when: ansible_distribution == "Debian"
 
 - name: create user
+  become: true
   user:
     name: "{{ ha_user }}"
     comment: "Home Assistant"
     system: yes
-    shell: "/sbin/nologin"
+    shell: "/bin/bash"
 
 - name: create directory
+  become: true
   file:
-    path: "{{ ha_conf_dir }}"
+    path: "{{ ha_conf_dir }}/.homeassistant"
     state: directory
+    recurse: yes
     mode: 02775
     owner: "{{ ha_user }}"
     group: "{{ ha_user }}"
+
+- name: install debian-required pip packages
+  become: true
+  become_user: "{{ ha_user }}"
+  become_method: sudo
+  pip:
+    name:
+    - appdirs
+    - packaging
+    - colorlog
+    - wheel
+    state: present
+    virtualenv: "{{ ha_conf_dir }}/{{ ha_venv }}"
+    virtualenv_command: python3 -m venv
+    extra_args: "--upgrade"
+  when: ansible_distribution == "Debian"

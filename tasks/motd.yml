@@ -6,6 +6,7 @@
 #
 ---
 - name: distribute the /etc/motd file
+  become: true
   template:
     src: motd.j2
     dest: /etc/motd

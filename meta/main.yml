@@ -20,6 +20,7 @@ galaxy_info:
     - name: Debian
       versions:
         - jessie
+        - bookworm
   categories:
     - system
     - home-automation
