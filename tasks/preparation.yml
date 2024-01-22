@@ -5,6 +5,21 @@
 # Licensed under Apache 2.0. All rights reserved.
 #
 ---
+- name: create user
+  user:
+    name: "{{ ha_user }}"
+    comment: "Home Assistant"
+    system: yes
+    shell: "/sbin/nologin"
+
+- name: create directory
+  file:
+    path: "{{ ha_conf_dir }}"
+    state: directory
+    mode: 02775
+    owner: "{{ ha_user }}"
+    group: "{{ ha_user }}"
+
 - name: install commonly-named packages
   package:
     name: "{{ item }}"
@@ -41,23 +56,9 @@
   pip:
     name: "{{ item }}"
     state: present
-    executable: pip3
+    virtualenv: "{{ ha_conf_dir }}"
   with_items:
     - appdirs
     - packaging
+    - python-dateutil
   when: ansible_distribution == "Debian"
-
-- name: create user
-  user:
-    name: "{{ ha_user }}"
-    comment: "Home Assistant"
-    system: yes
-    shell: "/sbin/nologin"
-
-- name: create directory
-  file:
-    path: "{{ ha_conf_dir }}"
-    state: directory
-    mode: 02775
-    owner: "{{ ha_user }}"
-    group: "{{ ha_user }}"
